@@ -4,7 +4,7 @@ Submitted by: **Amanda Coleman**
 
 This web app: **insert description**
 
-Time spent: **X** hours spent in total
+Time spent: **4** hours spent in total
 
 ## Required Features
 
@@ -31,18 +31,15 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
-<!-- Replace this with whatever GIF tool you used! -->
-GIF created with ...  
-<!-- Recommended tools:
-[Kap](https://getkap.co/) for macOS
-[ScreenToGif](https://www.screentogif.com/) for Windows
-[peek](https://github.com/phw/peek) for Linux. -->
 
 ## Notes
 
 Describe any challenges encountered while building the app.
+
+need to finish up connecting the back end of the application I wanted to try using material UI, to see how that would help with the design and although it gives nice features. It is not something I will continue to use. I will be spending the next day creating the application how it should be. Trying to get multiple API calls interconnected is and interesting process. 
+
+
 
 ## License
 

@@ -16,7 +16,7 @@ function App() {
   const [count, setCount] = useState(0);
   const [userInput, setUserInput] = useState('')
   const [typeSearch, setTypeSearch]= useState(-1)
-  const [submit, setSubmit] = useState(-1)
+  const [submit, setSubmit] = useState(0)
   const [Info, setInfo] = useState({
     AuthorID:'',
     BookImage:''
@@ -60,21 +60,21 @@ function App() {
             setUserInput(event.target.value);
           }}
         />
-        <Button variant="contained" onClick={(callBooks)=> setSubmit(1)}>
+        <Button variant="contained" onClick={()=> setSubmit(1) && clearImmediate} >
           Search
         </Button>
         <br></br>
         <FormGroup>
           <FormControlLabel
-            control={<Checkbox onChange={(event) => setTypeSearch(1)} />}
+            control={<Checkbox onClick={() => setTypeSearch(1)} />}
             label="Author"
           />
           <FormControlLabel
-            control={<Checkbox onChange={(event) => setTypeSearch(0)} />}
+            control={<Checkbox onClick={() => setTypeSearch(0)} />}
             label="Title"
           />
         </FormGroup>
-        {submit ? (typeSearch ? "Author" : "title") : ""}
+        {submit ?  (typeSearch ? userInput + " Author" : userInput + " Title") : ""}
         <br></br>
       </Container>
     </div>
