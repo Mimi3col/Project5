@@ -17,7 +17,12 @@ function App() {
   const [userInput, setUserInput] = useState('')
   const [typeSearch, setTypeSearch]= useState(-1)
   const [submit, setSubmit] = useState(-1)
+  const [Info, setInfo] = useState({
+    AuthorID:'',
+    BookImage:''
+  })
   
+  const bookData = ['']
   
   const ariaLabel = { "aria-label": "description" };
 
@@ -25,19 +30,17 @@ function App() {
 
   function callBooks() {
 
-    const url = 'https://openlibrary.org/search.json?'
+    let url;
     
-    typeSearch
-      ? url = (url + "author=" + userInput)
-      : url = (url + "title=" + userInput);
+    typeSearch ? url = `https://openlibrary.org/search.json?author=tolkien` : url = `https://openlibrary.org/search.json?title=${userInput}`;
 
 
     fetch(url)
       .then((res) => res.json())
-      .then((data) => { 
-        
-      });
+      .then((data) => bookData = data)
+
   }
+
 
 
 
@@ -50,19 +53,29 @@ function App() {
       <Container className="SearchBox" maxWidth="sm">
         <Input
           id="outlined-basic"
-          type='string'
+          type="string"
           placeholder="Enter Search Term"
           inputProps={ariaLabel}
-          onChange={(event)=>{setUserInput(event.target.value)}}
+          onChange={(event) => {
+            setUserInput(event.target.value);
+          }}
         />
-        <Button variant="contained" onClick={callBooks}>Search</Button>
+        <Button variant="contained" onClick={(callBooks)=> setSubmit(1)}>
+          Search
+        </Button>
         <br></br>
         <FormGroup>
-          <FormControlLabel control={<Checkbox onChange={()=>setTypeSearch(1)} />} label="Author" />
-          <FormControlLabel control={<Checkbox onChange={()=>setTypeSearch(0)} />} label="Title" />
+          <FormControlLabel
+            control={<Checkbox onChange={(event) => setTypeSearch(1)} />}
+            label="Author"
+          />
+          <FormControlLabel
+            control={<Checkbox onChange={(event) => setTypeSearch(0)} />}
+            label="Title"
+          />
         </FormGroup>
-        {userInput} {typeSearch?"Author":"title"}
-
+        {submit ? (typeSearch ? "Author" : "title") : ""}
+        <br></br>
       </Container>
     </div>
   );
