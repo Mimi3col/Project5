@@ -14,9 +14,15 @@
   justify-items: center;
 }
 
-.card {
-  padding: 2em;
+.Card {
+  padding: 2em; 
+
 }
+
+p{
+  font-size: medium;
+}
+
 
 .read-the-docs {
   color: #888;

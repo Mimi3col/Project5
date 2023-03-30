@@ -1,82 +1,62 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css'
-
-// Material UI imports 
-import TextField from '@mui/material/TextField';
-import Input from '@mui/material/Input';
-import Checkbox from '@mui/material/Checkbox';
-import FormControlLabel from '@mui/material/FormControlLabel'; 
-import FormGroup from '@mui/material/FormGroup';
-import Container from '@mui/material/Container';
-import Button from '@mui/material/Button';
-import Card from '@mui/material/Card';
-
+import Card from '../components/card';
+const API_KEY = import.meta.env.VITE_APP_API_KEY;
 
 function App() {
-  const [count, setCount] = useState(0);
-  const [userInput, setUserInput] = useState('')
-  const [typeSearch, setTypeSearch]= useState(-1)
-  const [submit, setSubmit] = useState(0)
+  const list = []; 
+
   const [Info, setInfo] = useState({
-    AuthorID:'',
-    BookImage:''
+    date:"",
+    high_temp:"",
+    low_temp:"",
+    avg_temp:""
   })
-  
-  const bookData = ['']
-  
-  const ariaLabel = { "aria-label": "description" };
+
+  const callRandomCityData = async(zipCode)=>{
+    zipCode=33510
+
+    const url = `https://api.weatherbit.io/v2.0/history/daily?postal_code=!${zipCode}&units=I&country=US&start_date=2023-02-25&end_date=2023-03-25&key=${API_KEY}`;
 
 
+      fetch(url)
+     .then(res=>res.json())
+     .then(object=>  
+      setInfo(
+      {
+        date: (object.data[0].datetime),
+        high_temp: (object.data[0].max_temp),
+        low_temp: (object.data[0].min_temp),
+        avg_temp: (object.data[0].temp)
+      }
+     ))
+  }
 
-  function callBooks() {
-
-    let url;
-    
-    typeSearch ? url = `https://openlibrary.org/search.json?author=tolkien` : url = `https://openlibrary.org/search.json?title=${userInput}`;
+  const allList = (object) =>{
+      
 
 
-    fetch(url)
-      .then((res) => res.json())
-      .then((data) => bookData = data)
 
   }
 
 
 
 
-
-
-
-
   return (
     <div className="App">
-      <Container className="SearchBox" maxWidth="sm">
-        <Input
-          id="outlined-basic"
-          type="string"
-          placeholder="Enter Search Term"
-          inputProps={ariaLabel}
-          onChange={(event) => {
-            setUserInput(event.target.value);
-          }}
-        />
-        <Button variant="contained" onClick={()=> setSubmit(1) && clearImmediate} >
-          Search
-        </Button>
+    
+        <button
+            className="border border-slate-500 hover:border-green-500 ..."
+         onClick={callRandomCityData}>Refresh Data</button>
         <br></br>
-        <FormGroup>
-          <FormControlLabel
-            control={<Checkbox onClick={() => setTypeSearch(1)} />}
-            label="Author"
-          />
-          <FormControlLabel
-            control={<Checkbox onClick={() => setTypeSearch(0)} />}
-            label="Title"
-          />
-        </FormGroup>
-        {submit ?  (typeSearch ? userInput + " Author" : userInput + " Title") : ""}
+
+        <div className="box-border h-32 w-100 p-4 border-4 border-blue-600 ...">
+            Date:  {Info.date} <br></br>
+            High:  {Info.high_temp} <br></br> 
+            Low:  {Info.low_temp} <br></br>
+            avg:   {Info.avg_temp}
+        </div>
         <br></br>
-      </Container>
     </div>
   );
 }
