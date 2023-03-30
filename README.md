@@ -4,20 +4,21 @@ Submitted by: **Amanda Coleman**
 
 This web app: **insert description**
 
-Time spent: **4** hours spent in total
+Time spent: **9** hours spent in total
 
 ## Required Features
 
 The following **required** functionality is completed:
 
-- [ ] **The list displays a list of data fetched using an API call**
-- [ ] **Data uses the useEffect React hook and async/await syntax**
-- [ ] **The app dashboard includes at least three summary statistics about the data such as**
-  - [ ] date
-  - [ ] High temp 
-  - [ ] low temp 
-  - [ ] Average temp
-- [ ] **A search bar allows the user to search for an item in the fetched data**
+- [x] **The list displays a list of data fetched using an API call**
+- [x] **Data uses the useEffect React hook and async/await syntax**
+- [x] **The app dashboard includes at least three summary statistics about the data such as**
+  - [x] date
+  - [x] High temp 
+  - [x] low temp 
+  - [x] Average temp
+- [x] **A search bar allows the user to search for an item in the fetched data**
+    - search bar allows the user to search for data from a new zipCode
 - [ ] **Multiple different filters (2+) allow the user to filter items in the database by specified categories**
 
 The following **optional** features are implemented:
@@ -34,13 +35,13 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-
+![My Video Walk Through](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNmRlMDc0NDNhZGVkNmFiYjkxOTBiY2U2N2EwNGY1MDAxOGJiNjVlZCZjdD1n/q4Iy8SPsPxsHwCTmsk/giphy.gif)
 
 ## Notes
 
 Describe any challenges encountered while building the app.
 
-need to finish up connecting the back end of the application I wanted to try using material UI, to see how that would help with the design and although it gives nice features. It is not something I will continue to use. I will be spending the next day creating the application how it should be. Trying to get multiple API calls interconnected is and interesting process. 
+I was able to get the search bar working and displaying 12 days of data from a given zip code. each box will show the High and low temp as well as the average temp for the given day. Next I will be implementing a filter so that the user is able to see the ranking of the days from highs average temp to lowest average temp. 
 
 
 
